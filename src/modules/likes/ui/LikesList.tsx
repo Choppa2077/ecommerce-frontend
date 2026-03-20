@@ -1,39 +1,24 @@
 import { Heart, Loader2 } from 'lucide-react';
-import type { Like } from '../api/likes.api.types';
 import { useLikesQuery } from '../../profile/query/useProfileQueries';
 import { ProductCard } from '../../product/ui/ProductCard';
-
-// Временный интерфейс для преобразования Like в Product
-interface ProductFromLike extends Omit<Like, 'interacted_at'> {
-  id: number;
-  description: string;
-  stock: number;
-  image_url: string;
-  is_active: boolean;
-  created_at: string;
-  updated_at: string;
-  category_name: string;
-}
+import type { Product } from '../../product/api/product.api.types';
 
 export const LikesList = () => {
   const { data: likesData, isLoading, error } = useLikesQuery();
 
-  // Преобразуем Like в Product для использования в ProductCard
-  const likedProducts: ProductFromLike[] = likesData?.likes.map(like => ({
+  const likedProducts: Product[] = (likesData?.likes ?? []).map(like => ({
     id: like.product_id,
     name: like.product_name,
-    product_id: like.product_id,
-    product_name: like.product_name,
-    description: '', // Можно добавить описание если нужно
+    description: '',
     category_id: like.category_id,
     price: like.price,
-    stock: 1, // По умолчанию в наличии
-    image_url: '', // Можно добавить изображение если есть
+    stock: 1,
+    image_url: '',
     is_active: true,
     created_at: '',
     updated_at: '',
-    category_name: '' // Можно добавить название категории если нужно
-  })) || [];
+    category_name: '',
+  }));
 
   if (isLoading) {
     return (
@@ -98,7 +83,7 @@ export const LikesList = () => {
           {likedProducts.map((product) => (
             <ProductCard 
               key={product.id} 
-              product={product as any}
+              product={product}
             />
           ))}
         </div>

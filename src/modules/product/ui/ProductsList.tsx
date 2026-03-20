@@ -73,7 +73,7 @@ export const ProductList = () => {
     e.preventDefault();
   };
 
-  const handleFilterChange = (key: keyof ProductListParams, value: any) => {
+  const handleFilterChange = (key: keyof ProductListParams, value: ProductListParams[keyof ProductListParams]) => {
     setFilters({ ...filters, [key]: value, page: 1 });
   };
 
