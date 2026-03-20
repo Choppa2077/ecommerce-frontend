@@ -42,7 +42,7 @@ export const ProductDetail = () => {
   const purchaseMutation = usePurchaseProductMutation();
   const viewMutation = useViewProductMutation();
 
-  const isLiked = likedData.liked || false;
+  const isLiked = likedData?.liked || false;
   const isPurchased = purchasedData?.purchased || false;
 
   // Track view when component mounts
