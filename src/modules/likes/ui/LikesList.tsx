@@ -22,6 +22,8 @@ export const LikesList = () => {
   const likedProducts: ProductFromLike[] = likesData?.likes.map(like => ({
     id: like.product_id,
     name: like.product_name,
+    product_id: like.product_id,
+    product_name: like.product_name,
     description: '', // Можно добавить описание если нужно
     category_id: like.category_id,
     price: like.price,

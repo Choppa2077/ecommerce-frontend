@@ -33,8 +33,8 @@ export const ProductList = () => {
     category_id: searchParams.get('category_id') ? parseInt(searchParams.get('category_id')!) : undefined,
     min_price: searchParams.get('min_price') ? parseFloat(searchParams.get('min_price')!) : undefined,
     max_price: searchParams.get('max_price') ? parseFloat(searchParams.get('max_price')!) : undefined,
-    sort_by: searchParams.get('sort_by') || 'created_at',
-    sort_order: searchParams.get('sort_order') || 'desc',
+    sort_by: (searchParams.get('sort_by') || 'created_at') as 'name' | 'price' | 'created_at',
+    sort_order: (searchParams.get('sort_order') || 'desc') as 'asc' | 'desc',
   });
 
   const [localSearch, setLocalSearch] = useState(filters.search || '');
@@ -80,11 +80,11 @@ export const ProductList = () => {
   const handleSortChange = (value: string) => {
     // Правильно разбиваем значение селекта на sort_by и sort_order
     const [sort_by, sort_order] = value.split('-');
-    setFilters({ 
-      ...filters, 
-      sort_by, 
-      sort_order,
-      page: 1 
+    setFilters({
+      ...filters,
+      sort_by: sort_by as 'name' | 'price' | 'created_at',
+      sort_order: sort_order as 'asc' | 'desc',
+      page: 1
     });
   };
 
@@ -111,7 +111,7 @@ export const ProductList = () => {
     filters.sort_by !== 'created_at' ||
     filters.sort_order !== 'desc';
 
-  const showRecommendations = !hasSearch && !hasFilters && recommendationsData?.recommendations?.length > 0;
+  const showRecommendations = !hasSearch && !hasFilters && (recommendationsData?.recommendations?.length ?? 0) > 0;
 
   // Получаем текущее значение для селекта сортировки
   const getCurrentSortValue = () => {

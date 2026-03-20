@@ -15,6 +15,7 @@ export interface Product {
 export interface ProductListResponse {
   products: Product[];
   total: number;
+  total_pages: number;
   page: number;
   limit: number;
 }
@@ -32,7 +33,7 @@ export interface ProductStatistics {
 export interface ProductListParams {
   page?: number;
   limit?: number;
-  category_id?: string;
+  category_id?: number;
   min_price?: number;
   max_price?: number;
   search?: string;

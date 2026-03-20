@@ -6,7 +6,7 @@ import type { AxiosError } from 'axios';
 
 export const useRegisterMutation = (): UseMutationResult<
   AuthResponse,
-  AxiosError,
+  AxiosError<{ message: string }>,
   RegisterPayload
 > => {
   return useMutation({

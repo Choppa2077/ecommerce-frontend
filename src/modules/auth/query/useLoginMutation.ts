@@ -11,7 +11,7 @@ import { PROFILE_QUERY_KEYS } from '../../profile/query/useProfileQueries';
 
 export const useLoginMutation = (): UseMutationResult<
   AuthResponse,
-  AxiosError,
+  AxiosError<{ message: string }>,
   LoginPayload
 > => {
   const queryClient = useQueryClient();

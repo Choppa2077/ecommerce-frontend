@@ -1,4 +1,4 @@
-import { useQuery, useMutation, useQueryClient, QueryClient } from '@tanstack/react-query';
+import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import type { UseQueryResult, UseMutationResult } from '@tanstack/react-query';
 import * as profileApi from '../api/profile.api';
 import type {

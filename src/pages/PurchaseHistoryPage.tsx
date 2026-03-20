@@ -25,7 +25,7 @@ export const PurchaseHistoryPage = () => {
 
   // Filter purchased products
   const purchasedProducts = useMemo(() => {
-    return (productsData?.products || []).filter((product, index) => {
+    return (productsData?.products || []).filter((_product, index) => {
       const query = purchasedQueries[index];
       return query.data?.purchased === true;
     });

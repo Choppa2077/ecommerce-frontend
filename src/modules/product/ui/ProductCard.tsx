@@ -22,13 +22,6 @@ export const ProductCard = ({ product }: ProductCardProps) => {
     likeMutation.mutate({ id: product.id, isLiked });
   };
 
-  const handleAddToCart = (e: React.MouseEvent) => {
-    e.preventDefault();
-    e.stopPropagation();
-    // Логика добавления в корзину
-    console.log('Add to cart:', product.id);
-  };
-
   const formatPrice = (price: number) => {
     return new Intl.NumberFormat('ru-RU', {
       style: 'currency',
