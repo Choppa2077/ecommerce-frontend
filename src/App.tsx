@@ -11,6 +11,7 @@ import { Layout } from './Layout';
 import { ProductDetailPage } from './pages/ProductDetailPage';
 import { PurchaseHistoryPage } from './pages/PurchaseHistoryPage';
 import { ProfilePage } from './pages/ProfilePage';
+import { FavoritesPage } from './pages/FavoritesPage';
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -66,6 +67,7 @@ function App() {
               />{' '}
               {/* Добавьте этот маршрут */}
               <Route path="/purchases" element={<PurchaseHistoryPage />} />
+              <Route path="/favorites" element={<FavoritesPage />} />
               <Route path="/profile" element={<ProfilePage/>} />
             </Route>
           </Route>

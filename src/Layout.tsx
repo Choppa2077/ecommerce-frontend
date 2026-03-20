@@ -1,13 +1,5 @@
 import { Link, Outlet, useNavigate, useLocation } from 'react-router-dom';
-import {
-  ShoppingCart,
-  User,
-  Heart,
-  Package,
-  LogOut,
-  Home,
-  TrendingUp,
-} from 'lucide-react';
+import { User, Heart, Package, LogOut } from 'lucide-react';
 import { useAuthStore } from './modules/auth/store/useAuthStore';
 
 export const Layout = () => {
@@ -53,6 +45,17 @@ export const Layout = () => {
                   <Package className="w-4 h-4 mr-1" />
                   Покупки
                 </Link>
+                <Link
+                  to="/favorites"
+                  className={`inline-flex items-center px-1 pt-1 text-sm font-medium ${
+                    isActive('/favorites')
+                      ? 'text-blue-600 border-b-2 border-blue-600'
+                      : 'text-gray-500 hover:text-gray-900'
+                  }`}
+                >
+                  <Heart className="w-4 h-4 mr-1" />
+                  Избранное
+                </Link>
               </div>
             </div>
 
@@ -88,6 +91,14 @@ export const Layout = () => {
               }`}
             >
               <Package className="w-5 h-5" />
+            </Link>
+            <Link
+              to="/favorites"
+              className={`p-2 rounded-lg ${
+                isActive('/favorites') ? 'text-blue-600' : 'text-gray-500'
+              }`}
+            >
+              <Heart className="w-5 h-5" />
             </Link>
             <Link
               to="/profile"
